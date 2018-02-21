@@ -2,7 +2,7 @@
 "use strict";
 'use strict';
 
-var app = angular.module('viewCustom', ['angularLoad']);
+var app = angular.module('viewCustom', ['angularLoad']).constant('IS_PRODUCTION', window.location.hostname == 'julac.hosted.exlibrisgroup.com' ? true : false);
 
 var browzine = {
     api: "https://api.thirdiron.com/public/v1/libraries/946",
@@ -85,6 +85,7 @@ app.component('prmSearchResultThumbnailContainerAfter', {
     },
     controller: 'prmSearchResultThumbnailContainerAfterController'
 });
+
 app.controller('prmSearchBarAfterController', [function () {
     var vm = this;
     vm.getSearchText = getSearchText;
@@ -114,18 +115,28 @@ app.component('prmSearchBarAfter', {
 // clickable banner with link map
 //
 //////////////////////////////////////////////////
-app.controller('prmLogoAfterController', [function () {
-    var vm = this;
-    vm.getIconLink = getIconLink;
-    function getIconLink() {
-        return vm.parentCtrl.iconLink;
+app.controller('prmLogoAfterController', ['$location', function ($location) {
+    this.hostName = $location.protocol() + "://" + $location.host() + ":" + $location.port();
+    this.lang = $location.search().lang;
+    this.iconLink = this.parentCtrl.iconLink;
+    this.cuhkLink = "http://www.cuhk.edu.hk/";
+    this.cuhkLibraryLink = "http://www.lib.cuhk.edu.hk/en";
+    switch (this.lang) {
+        case "zh_TW":
+            this.cuhkLink = "http://www.cuhk.edu.hk/chinese/index.html";
+            this.cuhkLibraryLink = "http://www.lib.cuhk.edu.hk/tc";
+            break;
+        case "zh_CN":
+            this.cuhkLink = "http://translate.itsc.cuhk.edu.hk/uniTS/www.cuhk.edu.hk/chinese/index.html";
+            this.cuhkLibraryLink = "http://www.lib.cuhk.edu.hk/sc";
+            break;
     }
 }]);
 
 app.component('prmLogoAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'prmLogoAfterController',
-    template: '<div class="product-logo product-logo-local" id="banner" tabindex="0"  role="banner">' + '<a href="http://librarysearch.lib.cuhk.edu.hk"><img class="logo-image" alt="{{::(&apos;nui.header.LogoAlt&apos; | translate)}}" ng-src="{{$ctrl.getIconLink()}}" usemap="#LogoMap"/>' + '<map name="LogoMap" id="LogoMap">' + '<area shape="rect" coords="4,14,36,44" href="http://www.cuhk.edu.hk/" target="_new" />' + '<area shape="rect" coords="36,14,70,44" href="http://www.lib.cuhk.edu.hk/en" target="_new" />' + '<area shape="rect" coords="70,0,240,60" href="https://julac.hosted.exlibrisgroup.com/primo-explore/search?vid=CUHK&tab=default_tab&lang=en_US&sortby=rank" />' + '</map>' + '</a></div>'
+    template: '\n        <div class="product-logo product-logo-local" id="banner" tabindex="0"  role="banner">\n            <a href="http://librarysearch.lib.cuhk.edu.hk">\n                <img class="logo-image" alt="{{::(&apos;nui.header.LogoAlt&apos; | translate)}}" ng-src="{{$ctrl.iconLink}}" usemap="#LogoMap"/>\n                <map name="LogoMap" id="LogoMap">\n                    <area shape="rect" coords="4,14,36,44" ng-href="{{$ctrl.cuhkLink}}" target="_new" />\n                    <area shape="rect" coords="36,14,70,44" ng-href="{{$ctrl.cuhkLibraryLink}}" target="_new" />\n                    <area shape="rect" coords="70,0,240,60" ng-href="{{$ctrl.hostName}}/primo-explore/search?vid=CUHK&tab=default_tab&lang={{$ctrl.lang}}&sortby=rank" />\n                </map>\n            </a>\n        </div>\n        <div ng-if="!IS_PRODUCTION" class="sandbox-label">Sandbox</div>\n        '
 });
 
 //////////////////////////////////////////////////
