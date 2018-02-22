@@ -1,7 +1,7 @@
 
 # The Primo New UI Customization Workflow Development Environment
 
-##Development guidelines
+## Development guidelines
 
 - Develop modular Features in separate ODF packages instead of putting everything in one big view based package.
 
