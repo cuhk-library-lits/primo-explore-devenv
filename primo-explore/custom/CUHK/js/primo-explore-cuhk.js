@@ -50,17 +50,14 @@ app.component('prmLogoAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'prmLogoAfterController',
     template: `
-        <div class="product-logo product-logo-local" id="banner" tabindex="0"  role="banner">
-            <a href="http://librarysearch.lib.cuhk.edu.hk">
-                <img class="logo-image" alt="{{::(&apos;nui.header.LogoAlt&apos; | translate)}}" ng-src="{{$ctrl.iconLink}}" usemap="#LogoMap"/>
-                <map name="LogoMap" id="LogoMap">
-                    <area shape="rect" coords="4,14,36,44" ng-href="{{$ctrl.cuhkLink}}" target="_new" />
-                    <area shape="rect" coords="36,14,70,44" ng-href="{{$ctrl.cuhkLibraryLink}}" target="_new" />
-                    <area shape="rect" coords="70,0,240,60" ng-href="{{$ctrl.hostName}}/primo-explore/search?vid=CUHK&tab=default_tab&lang={{$ctrl.lang}}&sortby=rank" />
-                </map>
-            </a>
+        <div class="product-logo-local" id="banner" tabindex="0"  role="banner">
+            <img class="logo-image" alt="{{::(&apos;nui.header.LogoAlt&apos; | translate)}}" ng-src="{{$ctrl.iconLink}}" usemap="#LogoMap"/>
+            <map name="LogoMap" id="LogoMap">
+                <area shape="rect" coords="0,0,60,60" ng-href="{{$ctrl.cuhkLink}}" target="_new" />
+                <area shape="rect" coords="60,0,106,60" ng-href="{{$ctrl.cuhkLibraryLink}}" target="_new" />
+                <area shape="rect" coords="106,0,200,60" ng-href="{{$ctrl.hostName}}/primo-explore/search?vid=CUHK&tab=default_tab&lang={{$ctrl.lang}}&sortby=rank" />
+            </map>
         </div>
-        <div ng-if="!IS_PRODUCTION" class="sandbox-label">Sandbox</div>
         `
 });
 
@@ -208,6 +205,7 @@ app.component('prmViewOnlineAfter', {
 // Google Analtytics
 //
 //////////////////////////////////////////////////
+/*
 app.component('prmExploreMainAfter', {
     bindings: {
         parentCtrl: '<',
@@ -243,3 +241,4 @@ app.factory('googleAnalytics', function () {
     };
 });
 
+*/
