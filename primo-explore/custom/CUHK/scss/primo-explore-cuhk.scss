@@ -1,5 +1,9 @@
+body {
+    background-color: #F2F2F2;
+    height: auto;
+}
 
-
+// Topbar
 prm-topbar .top-nav-bar {
     background-color:#6D1B6D; 
     height:60px; 
@@ -28,20 +32,76 @@ prm-main-menu[menu-type = menu] .md-button {
     padding:0 0.2em 0 0.2em; 
 }
 
+// Circle buttons
 prm-user-area .user-menu-button,
 prm-search-bookmark-filter .md-button {
-    background-color: rgba(145,167,145,.8);
+    background-color: rgba(170,190,170,.8);
 }
 
+// Top bar hover color
 prm-topbar .md-button:hover:not([disabled]),
 prm-topbar .md-button.button-over-dark:hover:not([disabled]),
 prm-user-area .md-button.user-menu-button:focus:not([disabled]),
 prm-user-area .md-button.user-menu-button:hover:not([disabled]),
 prm-search-bookmark-filter .md-button.md-icon-button:focus:not([disabled]),
 prm-search-bookmark-filter .md-button.md-icon-button:hover:not([disabled]) {
-    background-color: rgba(255,255,255,.25);
+    background-color: rgba(200,218,200,.8);
 }
 
+// Override #33FFFF color
+.prm-links.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], a.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1.button-content, [class*="NFT"] > span.prm-alt-link.prm-hue1, [class*="check_"] > span.prm-alt-link.prm-hue1, [class*="_more"] > span.prm-alt-link.prm-hue1, [class*="_unknown"] > span.prm-alt-link.prm-hue1, [class*="may_"] > span.prm-alt-link.prm-hue1, [class*="does_not_exist"] > span.prm-alt-link.prm-hue1, .worldcat > span.prm-alt-link.prm-hue1, .getit > span.prm-alt-link.prm-hue1, [class*="available"] > span.prm-alt-link.prm-hue1, [class*="FT"] > span.prm-alt-link.prm-hue1, .not_restricted > span.prm-alt-link.prm-hue1, .ext_not_restricted > span.prm-alt-link.prm-hue1, .fulltext > span.prm-alt-link.prm-hue1, .fulltext_linktorsrc > span.prm-alt-link.prm-hue1, .fulltext_newspaper > span.prm-alt-link.prm-hue1, .fulltext_linktorsrc_newspaper > span.prm-alt-link.prm-hue1, [class*="unavailable"] > span.prm-alt-link.prm-hue1, [class*="no_"] > span.prm-alt-link.prm-hue1, .restricted > span.prm-alt-link.prm-hue1, .duedate > span.prm-alt-link.prm-hue1, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1, .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title, .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1, .login-dialog .md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-alt-link.prm-hue1.md-list-item-inner, prm-main-menu[menu-type="full"] md-card .md-headline, prm-collection-discovery-view-switcher .prm-hue1.md-button.is-active, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, md-tabs.tabs-as-links md-tab-item.prm-alt-link.prm-hue1, md-tabs.tabs-as-app .prm-alt-link.prm-hue1.back-button, md-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, .tiles-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus, md-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link.prm-hue1, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.prm-hue1.md-button, md-list-item.prm-alt-link.prm-hue1.list-item-as-link {
+    color: #9E0D9E;
+}
+.prm-links.prm-hue-2, .md-button.arrow-link-button .prm-hue-2[link-arrow], a.prm-hue-2, .md-button.arrow-link-button .prm-hue-2.button-content, [class*="NFT"] > span.prm-hue-2, [class*="check_"] > span.prm-hue-2, [class*="_more"] > span.prm-hue-2, [class*="_unknown"] > span.prm-hue-2, [class*="may_"] > span.prm-hue-2, [class*="does_not_exist"] > span.prm-hue-2, .worldcat > span.prm-hue-2, .getit > span.prm-hue-2, [class*="available"] > span.prm-hue-2, [class*="FT"] > span.prm-hue-2, .not_restricted > span.prm-hue-2, .ext_not_restricted > span.prm-hue-2, .fulltext > span.prm-hue-2, .fulltext_linktorsrc > span.prm-hue-2, .fulltext_newspaper > span.prm-hue-2, .fulltext_linktorsrc_newspaper > span.prm-hue-2, [class*="unavailable"] > span.prm-hue-2, [class*="no_"] > span.prm-hue-2, .restricted > span.prm-hue-2, .duedate > span.prm-hue-2, .login-dialog md-list md-list-item .md-list-item-text h3.prm-hue-2, .login-dialog md-list md-list-item .md-list-item-text .prm-hue-2.list-item-title, .login-dialog .md-list md-list-item .md-list-item-text h3.prm-hue-2, .login-dialog .md-list md-list-item .md-list-item-text .prm-hue-2.list-item-title, .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text h3.prm-hue-2, .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text .prm-hue-2.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-hue-2.md-list-item-inner, prm-user-area .user-menu-button .user-name, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-hue-2, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-hue-2, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-hue-2, prm-tags-list md-chips md-chip .md-chip-content strong.prm-hue-2, md-tabs.tabs-as-links md-tab-item.prm-hue-2, md-tabs.tabs-as-app .prm-hue-2.back-button, md-grid-tile .tile-header .header-link .prm-hue-2.arrow-icon, .tiles-grid-tile .tile-header .header-link .prm-hue-2.arrow-icon, md-grid-tile .tile-header .prm-hue-2.header-link:hover, md-grid-tile .tile-header .prm-hue-2.header-link:focus, .tiles-grid-tile .tile-header .prm-hue-2.header-link:hover, .tiles-grid-tile .tile-header .prm-hue-2.header-link:focus, md-grid-tile .tile-header .prm-hue-2.md-button, .tiles-grid-tile .tile-header .prm-hue-2.md-button, md-input-container.has-fixed-message [ng-message] a.prm-hue-2, .separate-list-items md-list-item .item-loader-with-text .prm-hue-2.md-button, md-list-item.prm-hue-2.list-item-as-link {
+    color: #9E0D9E;
+}
+// User menu button
+prm-user-area .user-menu-button .user-language {
+    font-weight: 500;
+    font-size: 0.9em;
+}
+prm-user-area .user-menu-button .user-name {
+    color: #6D1B6D;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
 
- 
- 
+// Modal menu
+md-dialog.light-on-dark-dialog {
+    background-color: rgba(130,125,130,.75);
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+}
+
+// Advanced search button
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
+    color: #6D1B6D;
+    font-weight: 600;
+}
+
+// Search box
+prm-search-bar {
+    color: #6D1B6D;
+    font-weight: 600;
+}
+prm-search-bar .search-element-inner {
+    border: 1px solid #6D1B6D;
+}
+
+// Confirm buttons
+.md-button.button-confirm {
+    color: #FFFFFF;
+    background-color: #6D1B6D;
+}
+.md-button.button-confirm:hover:not([disabled]) {
+    color: #6D1B6D;
+    background-color: rgba(130,120,130,.75);
+}
+
+prm-brief-result-container.list-item {
+    background-color: #FFFFFF;
+}
+prm-brief-result-container .list-item-primary-content::before {
+	background-color: #F0F0F0;
+}

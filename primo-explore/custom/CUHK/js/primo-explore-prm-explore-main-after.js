@@ -13,11 +13,10 @@ app.controller('prmExploreMainAfterController', ['$scope', '$timeout', 'IS_PRODU
             return;
         var lastItemY = lastItem.offsetTop;
 
-        if ($scope.lastY < lastItemY && window.pageYOffset > lastItemY + 300 - window.innerHeight)
+        if ($scope.lastY < lastItemY && window.pageYOffset > lastItemY + 600 - window.innerHeight)
         {
             $scope.lastY = nextPageCtrl.lastY = lastItemY;
             angular.element(document.querySelector('div.results-container button.button-confirm:last-child')).triggerHandler('click');
-            console.log(window.pageYOffset + ", " + (lastItemY + 300 - window.innerHeight, 10));
         }
     });
 }]);

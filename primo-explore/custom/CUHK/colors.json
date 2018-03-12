@@ -4,7 +4,7 @@
   "backgroundColor" : "white",
   "links": "#3D6E94",
   "warning": "tomato",
-  "positive": "#0f7d00",
+  "positive": "#0F7D00",
   "negative": "gray",
-  "notice": "#e08303"
+  "notice": "#E08303"
 } 
