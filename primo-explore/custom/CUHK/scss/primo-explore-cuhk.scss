@@ -1,6 +1,6 @@
 body {
-    background-color: #F2F2F2;
     height: auto;
+    background-color: #F2F2F2;
 }
 
 // Topbar
@@ -101,7 +101,24 @@ prm-search-bar .search-element-inner {
 
 prm-brief-result-container.list-item {
     background-color: #FFFFFF;
+    border: 1px solid rgba(109,27,109,.2);
 }
 prm-brief-result-container .list-item-primary-content::before {
-	background-color: #F0F0F0;
+    background-color: #F2F2FF;
+}
+prm-brief-result-container .action-list-content::before {
+    background-color: #F2F2FF;
+}
+
+prm-brief-result-container .result-item-actions .md-icon-button
+{
+    color: #6D1B6D;
+}
+prm-brief-result-container .result-item-actions .md-icon-button:hover
+{
+    color: #9E0D9E;
+}
+prm-brief-result-container .result-item-actions .pin-button.pinned:hover
+{
+    color: #9E0D9E;
 }
