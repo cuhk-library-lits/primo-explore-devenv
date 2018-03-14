@@ -30,7 +30,7 @@ app.controller('prmExploreMainAfterController', ['$scope', 'IS_PRODUCTION', 'nex
             {
                 if (nextPageCtrl.lastY >= lastItemY)
                     nextPageCtrl.lastY = 0;
-                if (nextPageCtrl.lastY < lastItemY && window.pageYOffset > lastItemY + 600 - window.innerHeight)
+                if (nextPageCtrl.lastY < lastItemY && window.pageYOffset > lastItemY + 300 - window.innerHeight)
                 {
                     nextPageCtrl.busy = true;
                     nextPageCtrl.lastY = lastItemY;
