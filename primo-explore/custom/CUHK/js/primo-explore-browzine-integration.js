@@ -1,8 +1,8 @@
 var browzine = {
     api: "https://api.thirdiron.com/public/v1/libraries/946",
     apiKey: "5c204fa3-5823-4264-9faa-e3fb48881571",
-    primoJournalBrowZineWebLinkText: "View Journal Contents",
-    primoArticleBrowZineWebLinkText: "View Issue Contents",
+    //primoJournalBrowZineWebLinkText: "View Journal Contents",
+    //primoArticleBrowZineWebLinkText: "View Issue Contents",
 };
 
 angular.module('viewCustom').constant("api", browzine.api).constant("apiKey", browzine.apiKey);
@@ -10,10 +10,26 @@ angular.module('viewCustom').constant("api", browzine.api).constant("apiKey", br
 // Copied from https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js
 
 // Add Article In Context & BrowZine Links
-app.controller('prmSearchResultAvailabilityLineAfterController', function ($scope, $http, api, apiKey) {
+app.controller('prmSearchResultAvailabilityLineAfterController', function ($scope, $http, $location, api, apiKey) {
     var vm = this;
-    $scope.primoJournalBrowZineWebLinkText = browzine.primoJournalBrowZineWebLinkText || "View Journal Contents";
-    $scope.primoArticleBrowZineWebLinkText = browzine.primoArticleBrowZineWebLinkText || "View Issue Contents";
+    this.lang = $location.search().lang;
+
+    var primoJournalBrowZineWebLinkText = "View Journal in BrowZine";
+    var primoArticleBrowZineWebLinkText = "View Complete Issue in BrowZine";
+
+    switch (this.lang) {
+        case "zh_TW":
+            primoJournalBrowZineWebLinkText = "查看期刊 BrowZine";
+            primoArticleBrowZineWebLinkText = "查看全卷 BrowZine";
+            break;
+        case "zh_CN":
+            primoJournalBrowZineWebLinkText = "查看期刊 BrowZine";
+            primoArticleBrowZineWebLinkText = "查看全卷 BrowZine";
+            break;
+    }
+
+    $scope.primoJournalBrowZineWebLinkText = primoJournalBrowZineWebLinkText;
+    $scope.primoArticleBrowZineWebLinkText = primoArticleBrowZineWebLinkText;
     $scope.book_icon = "https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png";
     if (vm.parentCtrl.result.pnx.addata.doi && vm.parentCtrl.result.pnx.display.type[0] == 'article') {
         vm.doi = vm.parentCtrl.result.pnx.addata.doi[0] || '';
@@ -46,7 +62,26 @@ app.component('prmSearchResultAvailabilityLineAfter', {
         parentCtrl: '<'
     },
     controller: 'prmSearchResultAvailabilityLineAfterController',
-    template: '<div ng-if="article.data.browzineWebLink"><a href="{{ article.data.browzineWebLink }}" target="_blank" title="Via BrowZine"><img src="https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png" class="browzine-icon"> {{primoArticleBrowZineWebLinkText}} <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link"><svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg></md-icon></a></div><div ng-if="journal.data[0].browzineWebLink"><a href="{{ journal.data[0].browzineWebLink }}" target="_blank" title="Via BrowZine"><img src="https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png" class="browzine-icon"> {{primoJournalBrowZineWebLinkText}} <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link"><svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg></md-icon></a></div>'
+    template: `
+        <div ng-if="article.data.browzineWebLink">
+            <a href="{{ article.data.browzineWebLink }}" target="_blank" title="Via BrowZine">
+                <img src="https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png" class="browzine-icon">
+                <span class="browzine-link-label">{{primoArticleBrowZineWebLinkText}}</span>
+                <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link">
+                    <svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg>
+                </md-icon>
+            </a>
+        </div>
+        <div ng-if="journal.data[0].browzineWebLink">
+            <a href="{{ journal.data[0].browzineWebLink }}" target="_blank" title="Via BrowZine">
+                <img src="https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png" class="browzine-icon">
+                <span class="browzine-link-label">{{primoJournalBrowZineWebLinkText}}</span>
+                <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link">
+                    <svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg>
+                </md-icon>
+            </a>
+        </div>
+    `
 });
 
 // Add Journal Cover Images from BrowZine
