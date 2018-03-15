@@ -5,35 +5,44 @@ app.controller('prmExploreMainAfterController', ['$scope', 'IS_PRODUCTION', 'nex
         angular.element(document).find('body').addClass("body-margin");
     }
 
-    var debounce;
+    var scrollSnapFacet;
+    var scrollLimitY;
     angular.element(document).bind('scroll', function () {
         var scrollSnapY = IS_PRODUCTION ? 195 : 215;
 
-        clearTimeout(debounce);
-        debounce = setTimeout(function() {
-            // Scroll snap for sticky facet
+        // Scroll snap for sticky facet
+        clearTimeout(scrollSnapFacet);
+        scrollSnapFacet = setTimeout(function () {
             if (window.pageYOffset > (scrollSnapY - 100) && window.pageYOffset < (scrollSnapY + 100))
                 window.scrollTo(0, scrollSnapY);
+        }, 100);
+        
 
-            // Infinite Scroll
-            var lastItem = angular.element(document.querySelector('div .results-container .last-item'))[0];
-            if (!lastItem)
-                return;
-            
-            var lastItemY = lastItem.offsetTop;
-            if (nextPageCtrl.busy)
+        // Infinite Scroll
+        var loadMoreButton = angular.element(document.querySelector('div .results-container .md-button.button-confirm:last-child'))[0];
+        if (!loadMoreButton)
+            return;
+        
+        var viewPortHeight = (window.innerHeight || document.documentElement.clientHeight);
+        var buttonBottomY = loadMoreButton.getBoundingClientRect().bottom - viewPortHeight + 80;
+        if (buttonBottomY >= 0)
+            nextPageCtrl.scrollYLimit = window.pageYOffset;
+
+        if (buttonBottomY <= 0)
+            window.scrollTo(0, nextPageCtrl.scrollYLimit);
+
+        clearTimeout(scrollLimitY);
+        scrollLimitY = setTimeout(function() {
+            if (nextPageCtrl.debounce)
             {
-                if (nextPageCtrl.lastY < lastItemY)
-                    nextPageCtrl.busy = false;
+                if (buttonBottomY > 10)
+                    nextPageCtrl.debounce = false;
             }
             else
             {
-                if (nextPageCtrl.lastY >= lastItemY)
-                    nextPageCtrl.lastY = 0;
-                if (nextPageCtrl.lastY < lastItemY && window.pageYOffset > lastItemY + 300 - window.innerHeight)
+                if (buttonBottomY <= 10)
                 {
-                    nextPageCtrl.busy = true;
-                    nextPageCtrl.lastY = lastItemY;
+                    nextPageCtrl.debounce = true;
                     angular.element(document.querySelector('div .results-container .md-button.button-confirm:last-child')).triggerHandler('click');
                 }
             }
