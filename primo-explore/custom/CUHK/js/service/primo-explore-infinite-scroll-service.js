@@ -10,7 +10,7 @@ function InfiniteScrollService($document, SandboxLabelService) {
         var viewPortHeight = (window.innerHeight || docRoot.documentElement.clientHeight);
         var loadMoreButton = angular.element(docRoot.querySelector(loadMoreButtonSelector))[0];
         if (loadMoreButton)
-            return loadMoreButton.getBoundingClientRect().bottom - viewPortHeight + 50;
+            return loadMoreButton.getBoundingClientRect().bottom - viewPortHeight + 100;
         return null;
     };
 
