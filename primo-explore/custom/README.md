@@ -35,3 +35,8 @@
             - main.scss
             - primo-explore-{{prm-directive}}.scss
             - primo-explore-{{feature}}.scss
+
+3. To inspect angular scope
+    - Use the following commands
+    > angular.reloadWithDebugInfo()
+    > angular.element($0).scope().$ctrl
