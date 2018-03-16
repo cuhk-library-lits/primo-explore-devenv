@@ -1,6 +1,17 @@
-body {
-    height: auto;
+html {
     background-color: #F2F2F2;
+}
+body {
+    background-color: #F2F2F2;
+}
+input,
+input::placeholder,
+md-input-container input {
+    color: #6D1B6D;
+    opacity: 1;
+}
+md-input-container:after {
+    background-color: #6D1B6D;
 }
 .md-button.button-as-link.link-alt-color {
     color: #3D7E94 !important;
@@ -70,6 +81,7 @@ md-content {
 
 // User menu button
 prm-user-area .user-menu-button .user-language {
+    color: #000000;
     font-weight: 500 !important;
     font-size: 0.9em !important;
 }
@@ -92,10 +104,42 @@ md-dialog.light-on-dark-dialog {
     color: #FFFFFF !important;
 }
 
-// Advanced search button
+// Search bar buttons
+.search-elements-wrapper .md-button,
+prm-search-bar .search-actions .md-button {
+    color: #FFFFFF !important;
+    background-color: #6D1B6D !important;
+}
+.search-elements-wrapper md-autocomplete-wrap .md-button {
+    color: #3a3a3a !important;
+    background-color: transparent !important;
+}
+prm-search-bar .search-switch-buttons {
+    padding-left: 10px;
+}
 prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
     color: #6D1B6D !important;
+    font-size: 1.1em;
     font-weight: 600 !important;
+    min-height: 20px;
+    padding: 0px;
+    line-height: 0px;
+}
+prm-search-bar .search-switch-buttons .md-button.switch-to-simple {
+    color: #6D1B6D !important;
+    font-size: 1.1em;
+    font-weight: 600 !important;
+}
+prm-search-bar .search-switch-buttons .md-button.switch-to-simple span,
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced span {
+    line-height: 1em;
+    text-transform: capitalize;
+}
+prm-search-bar ._md-select-value span {
+    height: 100%;
+}
+prm-search-bar ._md-select-value ._md-select-icon {
+    height: 80%;
 }
 
 // Search box
@@ -103,25 +147,51 @@ prm-search-bar {
     color: #6D1B6D !important;
     font-weight: 600 !important;
     padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding-bottom: 5px !important;
 }
 prm-search-bar .search-element-inner {
     border: 1px solid #6D1B6D !important;
 }
-.__sm prm-search-bar {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+prm-search-bar input {
+    height: 40px !important;
+}
+prm-search-bar .search-elements-wrapper.simple-mode {
+    min-height: 40px !important;
+}
+.search-elements-wrapper {
+    min-height: 40px !important;
+}
+.search-elements-wrapper md-input-container {
+    min-height: 100% !important;
+}
+.search-elements-wrapper form input{
+    height: 100% !important;
+}
+prm-advanced-search .search-string .string-field input {
+    color: #3D7E94;
+}
+
+prm-atoz-search-bar,
+prm-alphabet-toolbar > div {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+prm-alphabet-toolbar .md-button {
+    height: 25px !important;
+    min-height: 25px !important;
+    line-height: 25px !important;
+    font-weight: 600;
 }
 
 // Confirm buttons
-.md-button {
+ui-view .md-button {
     line-height: 24px !important;
 }
-.md-button.button-confirm {
+ui-view .md-button.button-confirm {
     color: #FFFFFF !important;
     background-color: #6D1B6D !important;
 }
-.md-button.button-confirm:hover:not([disabled]) {
+ui-view .md-button.button-confirm:hover:not([disabled]) {
     color: #6D1B6D !important;
     background-color: rgba(130,120,130,.75) !important;
 }
@@ -151,6 +221,10 @@ prm-brief-result-container .result-item-actions .pin-button.pinned:hover
 }
 
 .md-scroll-mask {
+    background-color: transparent !important;
+    overflow: hidden;
+}
+primo-explore .md-scroll-mask {
     background-color: rgba(0,0,0,.5) !important;
 }
 
@@ -171,6 +245,10 @@ prm-facet .section-title-header {
 prm-facet-range .md-range-content .button-as-link {
     font-weight: 600 !important;
 }
+prm-facet input {
+    color: #3a3a3a !important;
+    font-weight: 600 !important;
+}
 
 // Override #33FFFF color
 .prm-links.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], a.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1.button-content, [class*="NFT"] > span.prm-alt-link.prm-hue1, [class*="check_"] > span.prm-alt-link.prm-hue1, [class*="_more"] > span.prm-alt-link.prm-hue1, [class*="_unknown"] > span.prm-alt-link.prm-hue1, [class*="may_"] > span.prm-alt-link.prm-hue1, [class*="does_not_exist"] > span.prm-alt-link.prm-hue1, .worldcat > span.prm-alt-link.prm-hue1, .getit > span.prm-alt-link.prm-hue1, [class*="available"] > span.prm-alt-link.prm-hue1, [class*="FT"] > span.prm-alt-link.prm-hue1, .not_restricted > span.prm-alt-link.prm-hue1, .ext_not_restricted > span.prm-alt-link.prm-hue1, .fulltext > span.prm-alt-link.prm-hue1, .fulltext_linktorsrc > span.prm-alt-link.prm-hue1, .fulltext_newspaper > span.prm-alt-link.prm-hue1, .fulltext_linktorsrc_newspaper > span.prm-alt-link.prm-hue1, [class*="unavailable"] > span.prm-alt-link.prm-hue1, [class*="no_"] > span.prm-alt-link.prm-hue1, .restricted > span.prm-alt-link.prm-hue1, .duedate > span.prm-alt-link.prm-hue1, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1, .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title, .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1, .login-dialog .md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-alt-link.prm-hue1.md-list-item-inner, prm-main-menu[menu-type="full"] md-card .md-headline, prm-collection-discovery-view-switcher .prm-hue1.md-button.is-active, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, md-tabs.tabs-as-links md-tab-item.prm-alt-link.prm-hue1, md-tabs.tabs-as-app .prm-alt-link.prm-hue1.back-button, md-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, .tiles-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus, md-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link.prm-hue1, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.prm-hue1.md-button, md-list-item.prm-alt-link.prm-hue1.list-item-as-link {
@@ -184,6 +262,26 @@ prm-alphabet-toolbar .md-button {
     color: #6D1B6D !important;
 }
 
+.md-autocomplete-suggestions .suggestion-scope {
+    color: #6D1B6D;
+}
+
+.request-form md-input-container label,
+.request-form md-input-container label:not(.md-no-float):not(._md-container-ignore) {
+    color: #6D1B6D;
+}
+
+md-radio-button.md-checked,
+md-radio-button.md-checked ._md-on,
+md-radio-button.md-checked .md-on,
+md-radio-button.md-checked ._md-off,
+md-radio-button.md-checked .md-off {
+    border-color: #9E0D9E;
+}
+md-radio-button.md-checked ._md-on,
+md-radio-button.md-checked .md-on {
+    background-color: #6D1B6D;
+}
 
 @media screen and (max-width: 599px) {
     prm-search-bar {

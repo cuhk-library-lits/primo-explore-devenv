@@ -74,7 +74,7 @@ function viewJsDir() {
 }
 
 function mainPath() {
-    return viewJsDir()+'/*.js';
+    return viewJsDir()+'/**/*.js';
 }
 
 function mainJsPath() {

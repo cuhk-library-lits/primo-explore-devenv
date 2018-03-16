@@ -6,10 +6,10 @@
 1. Generate site color
     - Update `primo-explore-devenv/primo-explore/<VIEW>/colos.json`, for example
     > {
-    >   "primary": "#BBBBBB",
+    >   "primary": "#CCCCCC",
     >   "secondary" : "#FFFFFF",
     >   "backgroundColor" : "white",
-    >   "links": "#3D6E94",
+    >   "links": "#3D7E94",
     >   "warning": "tomato",
     >   "positive": "#0F7D00",
     >   "negative": "gray",
@@ -25,12 +25,13 @@
 
     - File structure:
         - js ->
-            - custom.module.js 
-            - primo-explore-{{feature}}.js
-            - primo-explore-{{service-name}}-service.js
-            - primo-explore-{{directive id}}.js
+            - custom.js
+            - custom.module.js
+            - controller
+                - primo-explore-{{prm-directive}}-controller.js
+            - service
+                - primo-explore-{{service-name}}-service.js
         - scss ->
             - main.scss
+            - primo-explore-{{prm-directive}}.scss
             - primo-explore-{{feature}}.scss
-            - primo-explore-{{service-name}}-service.scss
-            - primo-explore-{{directive id}}.scss
