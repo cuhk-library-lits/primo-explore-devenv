@@ -1,8 +1,6 @@
 app.controller('prmLogoAfterController', ['CUHKLibraryLogoService', function (CUHKLibraryLogoService) {
     var ctrl = this;
-    ctrl.iconLink = ctrl.parentCtrl.iconLink;
-    ctrl.hostName = CUHKLibraryLogoService.hostname;
-    ctrl.lang = CUHKLibraryLogoService.lang;
+    CUHKLibraryLogoService.refreshLinks();
     ctrl.cuhkLink = CUHKLibraryLogoService.cuhkLink;
     ctrl.cuhkLibraryLink = CUHKLibraryLogoService.cuhkLibraryLink;
     ctrl.cuhkLibrarySearchLink = CUHKLibraryLogoService.cuhkLibrarySearchLink;
