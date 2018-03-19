@@ -13,6 +13,7 @@ function CUHKLibraryLogoService($location) {
             this.cuhkLibraryLink = "http://www.lib.cuhk.edu.hk/sc";
             break;
     }
+    this.cuhkLibrarySearchLink = this.hostName + "/primo-explore/search?vid=CUHK&tab=default_tab&lang=" + this.lang + "&sortby=rank";
 }
 
 app.service('CUHKLibraryLogoService', ['$location', CUHKLibraryLogoService]);

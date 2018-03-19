@@ -1,33 +1,43 @@
-function ScrollSnapService($document, SandboxLabelService) {
-    var sandboxLabelVisible = SandboxLabelService.showSandboxLabel;
+var FACET_STUCK_Y = 24;
+var SCROLL_SNAP_MARGIN = 50;
+var SCROLL_SNAP_EFF_SCREEN_WIDTH = 960;
+
+function ScrollSnapService($document, $window) {
     var docRoot = $document[0];
 
     this.docRootElement = function() {
         return angular.element(docRoot);
     }
 
-    this.getCurrentScrollSnapY = function () {
-        var searchBarElement = docRoot.querySelector('prm-search-bar .advanced-search-backdrop');
-        var alertBarElement = docRoot.querySelector('prm-alert-bar div');
-
-        var searchBarHeight = searchBarElement ? searchBarElement.offsetHeight : 0;
-        var alertBarHeight = alertBarElement ? alertBarElement.offsetHeight : 0;
-
-        return alertBarHeight + searchBarHeight + (sandboxLabelVisible ? 80 : 60);
+    this.getScrollSnapY = function() {
+        var facetDiv = docRoot.querySelector('.sidebar .primo-scrollbar');
+        if (facetDiv) {
+            var facetDivY = facetDiv.getBoundingClientRect().top;
+            if (facetDivY > 0 && Math.abs(facetDivY - FACET_STUCK_Y) <= SCROLL_SNAP_MARGIN) {
+                return $window.pageYOffset + facetDivY - FACET_STUCK_Y;
+            }
+        }
+        return $window.pageYOffset;
     };
+
+    this.effective = function() {
+        return $window.matchMedia('(min-width: ' + SCROLL_SNAP_EFF_SCREEN_WIDTH + 'px)').matches;
+    }
 }
 
-ScrollSnapService.prototype.enable = function () {
-    var getCurrentScrollSnapY = this.getCurrentScrollSnapY;
+ScrollSnapService.prototype.init = function () {
+    var getScrollSnapY = this.getScrollSnapY;
+    var effective = this.effective;
     var debounce;
     this.docRootElement().bind('scroll', function () {
-        var scrollSnapY = getCurrentScrollSnapY();
-        clearTimeout(debounce);
-        debounce = setTimeout(function () {
-            if (window.pageYOffset > (scrollSnapY - 20) && window.pageYOffset < (scrollSnapY + 100))
-                window.scrollTo(0, scrollSnapY);
-        }, 200);
+        if (effective()) {
+            var scrollSnapY = getScrollSnapY();
+            clearTimeout(debounce);
+            debounce = setTimeout(function () {
+                window.scrollTo(0, Math.ceil(scrollSnapY));
+            }, 100);
+        }
     });
 }
 
-app.service('ScrollSnapService', ['$document', 'SandboxLabelService', ScrollSnapService]);
+app.service('ScrollSnapService', ['$document', '$window', ScrollSnapService]);

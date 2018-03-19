@@ -7,8 +7,8 @@ app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelServi
             angular.element($document[0]).find('body').addClass("body-margin");
         }
         
-        ScrollSnapService.enable();
-        InfiniteScrollService.enable();
+        ScrollSnapService.init();
+        InfiniteScrollService.init();
     }
 ]);
 

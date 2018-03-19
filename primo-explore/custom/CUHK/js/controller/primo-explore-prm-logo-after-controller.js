@@ -5,6 +5,7 @@ app.controller('prmLogoAfterController', ['CUHKLibraryLogoService', function (CU
     ctrl.lang = CUHKLibraryLogoService.lang;
     ctrl.cuhkLink = CUHKLibraryLogoService.cuhkLink;
     ctrl.cuhkLibraryLink = CUHKLibraryLogoService.cuhkLibraryLink;
+    ctrl.cuhkLibrarySearchLink = CUHKLibraryLogoService.cuhkLibrarySearchLink;
 }]);
 
 app.component('prmLogoAfter', {
@@ -12,12 +13,18 @@ app.component('prmLogoAfter', {
     controller: 'prmLogoAfterController',
     template: `
         <div class="product-logo-local" id="banner" tabindex="0"  role="banner">
-            <img class="logo-image" alt="{{::(&apos;nui.header.LogoAlt&apos; | translate)}}" ng-src="{{ $ctrl.iconLink }}" usemap="#LogoMap"/>
-            <map name="LogoMap" id="LogoMap">
-                <area shape="rect" coords="0,0,60,60" ng-href="{{ $ctrl.cuhkLink }}" target="_new" />
-                <area shape="rect" coords="60,0,106,60" ng-href="{{ $ctrl.cuhkLibraryLink }}" target="_new" />
-                <area shape="rect" coords="106,0,200,60" ng-href="{{ $ctrl.hostName }}/primo-explore/search?vid=CUHK&tab=default_tab&lang={{$ctrl.lang}}&sortby=rank" />
-            </map>
+            <a ng-href="{{ $ctrl.cuhkLink }}" target="_new">
+                <img class="logo-image" alt="CUHK Logo" ng-src="custom/CUHK/img/cuhk.png" src="custom/CUHK/img/cuhk.png">
+            </a>
+            <a ng-href="{{ $ctrl.cuhkLibraryLink }}" target="_new">
+                <img class="logo-image condensed" alt="CUHK Library Logo" ng-src="custom/CUHK/img/cuhk_library.png" src="custom/CUHK/img/cuhk_library.png">
+            </a>
+            <a ng-href="{{ $ctrl.cuhkLibrarySearchLink }}">
+                <div class="logo-text">
+                    <span>Library</span>
+                    <span><strong>Search</strong></span>
+                </div>
+            </a>
         </div>
         `
 });

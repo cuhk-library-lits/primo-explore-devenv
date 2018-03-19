@@ -1,29 +1,49 @@
-function InfiniteScrollService($document, SandboxLabelService) {
+var SCROLL_LIMIT_EFF_SCREEN_WIDTH = 960;
+
+function InfiniteScrollService($document, $window) {
     var docRoot = $document[0];
     var loadMoreButtonSelector = "div .results-container .md-button.button-confirm:last-child";
+    var bottomFixedToolbarSelector = "prm-search .bottom-fixed-toolbar";
+    var scrollYLimit = null;
     
     this.docRootElement = function () {
         return angular.element(docRoot);
     }
 
     this.getLoadMoreButtonY = function() {
-        var viewPortHeight = (window.innerHeight || docRoot.documentElement.clientHeight);
+        var viewPortHeight = ($window.innerHeight || docRoot.documentElement.clientHeight);
         var loadMoreButton = angular.element(docRoot.querySelector(loadMoreButtonSelector))[0];
-        if (loadMoreButton)
-            return loadMoreButton.getBoundingClientRect().bottom - viewPortHeight + 100;
+        var bottomFixedToolbar = angular.element(docRoot.querySelector(bottomFixedToolbarSelector))[0];
+        if (loadMoreButton) {
+            var loadMoreButtonBottom = loadMoreButton.getBoundingClientRect().bottom - viewPortHeight + 80;
+            if (bottomFixedToolbar)
+                loadMoreButtonBottom + viewPortHeight - bottomFixedToolbar.getBoundingClientRect().top
+            return loadMoreButtonBottom;
+        }
+            
         return null;
     };
 
     this.clickLoadMoreButton = function() {
         angular.element(docRoot.querySelector(loadMoreButtonSelector)).triggerHandler('click');
     }
+
+    this.limitScroll = function (loadMoreButtonY) {
+        if (loadMoreButtonY >= 0)
+            scrollYLimit = $window.pageYOffset;
+        else {
+            if (scrollYLimit)
+                $window.scrollTo(0, scrollYLimit);
+        }
+    }
 }
 
-InfiniteScrollService.prototype.enable = function () {
+InfiniteScrollService.prototype.init = function () {
     var getLoadMoreButtonY = this.getLoadMoreButtonY;
     var clickLoadMoreButton = this.clickLoadMoreButton;
+    var limitScroll = this.limitScroll;
 
-    var scrollYLimit = 0;
+    var scrollYLimit = null;
     var busy = false;
 
     var debounce;
@@ -32,11 +52,7 @@ InfiniteScrollService.prototype.enable = function () {
         if (!loadMoreButtonY)
             return;
 
-        if (loadMoreButtonY >= 0)
-            scrollYLimit = window.pageYOffset;
-
-        if (loadMoreButtonY <= 0)
-            window.scrollTo(0, scrollYLimit);
+        limitScroll(loadMoreButtonY);
 
         clearTimeout(debounce);
         debounce = setTimeout(function () {
@@ -54,4 +70,4 @@ InfiniteScrollService.prototype.enable = function () {
     });
 }
 
-app.service('InfiniteScrollService', ['$document', InfiniteScrollService]);
+app.service('InfiniteScrollService', ['$document', '$window', InfiniteScrollService]);

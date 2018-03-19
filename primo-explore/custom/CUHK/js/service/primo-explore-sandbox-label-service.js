@@ -1,4 +1,3 @@
-//var PRODUCTION_HOST_NAME = "localhost";
 var PRODUCTION_HOST_NAME = "julac.hosted.exlibrisgroup.com";
 
 function SandboxLabelService($location, $document) {
