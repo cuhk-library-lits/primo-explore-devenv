@@ -14,8 +14,5 @@ app.controller('prmFacetExactAfterController', ['FacetCountLimitService', functi
 
 app.component('prmFacetExactAfter', {
     bindings: { parentCtrl: '<' },
-    controller: 'prmFacetExactAfterController',
-    template: `
-        <div class="facet-limit-label" ng-if="$ctrl.showFacetLimitCount">(Top {{$ctrl.facetLimitCount}})</div>
-        `
+    controller: 'prmFacetExactAfterController'
 });
