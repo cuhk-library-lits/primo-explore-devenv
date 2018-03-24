@@ -3,12 +3,10 @@ app.controller('prmFacetExactAfterController', ['FacetCountLimitService', functi
     var facetLimitCount = FacetCountLimitService.facetLimitCount;
 
     ctrl.facetLimitCount = facetLimitCount;
-    ctrl.showFacetLimitCount = false;
     
     var facetGroup = ctrl.parentCtrl.facetGroup;
     if (facetGroup && facetGroup.values && facetGroup.values.length > facetLimitCount) {
         facetGroup.values.splice(facetLimitCount, facetGroup.values.length - facetLimitCount);
-        ctrl.showFacetLimitCount = true;
     }
 }]);
 
