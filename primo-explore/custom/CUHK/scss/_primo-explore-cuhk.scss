@@ -357,4 +357,8 @@ md-radio-button.md-checked .md-on {
     prm-search-bar .search-input {
         height: 60px;
     }
+    prm-alert-bar .alert-bar .bar-text {
+        min-width: 200px;
+        padding-left: 20px;
+    }
 }
