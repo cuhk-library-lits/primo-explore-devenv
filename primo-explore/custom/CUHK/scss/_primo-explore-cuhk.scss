@@ -124,6 +124,16 @@ prm-user-area .user-menu-button .user-name {
     font-size: 1.2em !important;
     line-height: 1.5em !important;
 }
+prm-user-area .user-button-text {
+    z-index: 1 !important;
+}
+
+prm-user-area md-fab-trigger.show-user-info {
+    display: none;
+}
+prm-user-area md-fab-actions.md-toolbar-tools {
+    background-color: #6D1B6D !important;
+}
 
 // User menu topbar overlay
 prm-user-area md-fab-toolbar.md-is-open md-fab-trigger ._md-fab-toolbar-background {
@@ -132,7 +142,7 @@ prm-user-area md-fab-toolbar.md-is-open md-fab-trigger ._md-fab-toolbar-backgrou
 
 // Modal menu
 md-dialog.light-on-dark-dialog {
-    background-color: rgba(130,125,130,.75) !important;
+    background-color: rgba(190, 190, 190, 0.7) !important;
     border: 1px solid #FFFFFF !important;
     border-radius: 3px !important;
     color: #FFFFFF !important;
@@ -180,12 +190,18 @@ prm-search-bar ._md-select-value ._md-select-icon {
     height: 80%;
 }
 
+prm-browse-search-bar,
+prm-atoz-search-bar {
+    background-color: #CCCCCC !important;
+}
+
 // Search box
 prm-search-bar {
     color: #6D1B6D !important;
     font-weight: 600 !important;
     padding-top: 20px !important;
     padding-bottom: 5px !important;
+    background-color: #CCCCCC !important;
 }
 prm-search-bar .search-element-inner {
     border: 1px solid #6D1B6D !important;
@@ -258,13 +274,6 @@ prm-brief-result-container .result-item-actions .pin-button.pinned:hover
     color: #9E0D9E !important;
 }
 
-.md-scroll-mask {
-    background-color: transparent !important;
-    overflow: hidden;
-}
-primo-explore .md-scroll-mask {
-    background-color: rgba(0,0,0,.5) !important;
-}
 
 prm-alert-bar .alert-bar {
     height: 35px !important;
