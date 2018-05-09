@@ -10,6 +10,7 @@ Note:
 is in development and can be added once completed
 */
 
+/*
 app.component('prmFullViewServiceContainerAfter', {
     bindings: { parentCtrl: '<' },
     template: `
@@ -17,3 +18,4 @@ app.component('prmFullViewServiceContainerAfter', {
                <julac-view-it-from-other-inst parent-ctrl="$ctrl.parentCtrl"></julac-view-it-from-other-inst>
     `
 });
+*/

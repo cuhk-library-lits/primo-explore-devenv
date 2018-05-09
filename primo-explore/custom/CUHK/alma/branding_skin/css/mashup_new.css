@@ -1366,7 +1366,15 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
 */
 
 /* hide unnecessary HKALL request icon */
-.iframeHeader .submitAsLink.popout + span::before {
+.iframeHeaderContent .recordListActionSeparator {
+    display: none;
+}
+.iframeHeaderContent .submitAsLink {
+    margin-left: 12px !important;
+}
+.iframeHeaderContent .submitAsLink[onclick^="window.location.href='/view/uresolver/852JULAC_CUHK/openRequest?requestType=purchaseRequest"],
+.iframeHeaderContent .submitAsLink[onclick^="window.open('https://julac.hosted.exlibrisgroup.com/primo-explore/search?vid=CUHK&sortby=rank&lang=en_US"]
+{
     display: none;
 }
 

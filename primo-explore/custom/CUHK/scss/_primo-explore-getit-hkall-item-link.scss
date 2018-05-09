@@ -1,0 +1,26 @@
+prm-hkall-item-link .hkallLink {
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px; 
+    margin-bottom: 0px;
+}
+
+prm-hkall-item-link .hkallLink span {
+    float: right;
+}
+
+prm-hkall-item-link .hkallLink a:before {
+    content: url('../img/hkall-small.png');
+    position: relative;
+    top: 3px;
+    margin-right: 3px;
+}
+
+prm-hkall-item-link .hkallLink md-icon {
+    height: 15px;
+    min-height: 15px;
+    width: 15px;
+    min-width: 15px;
+    top: -2px;
+    position: relative;
+}

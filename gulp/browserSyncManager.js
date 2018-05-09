@@ -33,7 +33,8 @@ function startServer(args) {
         server: {
             baseDir: baseDir
         },
-        open:open
+        open:open,
+        reloadDebounce: 2000
     };
     if(middleware) {
         conf.middleware = args.middleware;

@@ -49,7 +49,7 @@ prm-logo .product-logo-local {
     line-height: 60px !important;
     text-align: left !important;
     vertical-align: middle;
-    background: linear-gradient(to right, #FFFFFF, transparent 80%) !important;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.75) 30%, transparent) !important;
     font-size: 0px !important;
 }
 prm-logo .product-logo-local .condensed{
@@ -142,7 +142,7 @@ prm-user-area md-fab-toolbar.md-is-open md-fab-trigger ._md-fab-toolbar-backgrou
 
 // Modal menu
 md-dialog.light-on-dark-dialog {
-    background-color: rgba(190, 190, 190, 0.7) !important;
+    background-color: rgba(190, 190, 190, 0.9) !important;
     border: 1px solid #FFFFFF !important;
     border-radius: 3px !important;
     color: #FFFFFF !important;
@@ -334,11 +334,15 @@ md-radio-button.md-checked .md-on {
     background-color: #6D1B6D;
 }
 
+.dark-toolbar prm-pre-filters {
+    color: #6D1B6D !important;
+}
+
 @media screen and (max-width: 1279px) {
     prm-logo .product-logo-local {
         width: 180px !important;
         padding-left: 2px !important;
-        background: linear-gradient(to right, #FFFFFF, transparent 95%) !important;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.75) 50%, transparent) !important;
     }
     prm-logo .logo-image, prm-logo img {
         margin-left: -2px !important;
@@ -351,6 +355,7 @@ md-radio-button.md-checked .md-on {
         font-size: 17px !important;
         line-height: 22px !important;
         margin-left: 2px !important;
+        text-shadow: 2px 2px #000000 !important;
     }
     prm-logo .product-logo-local .logo-text strong {
         margin-left: 1px !important;
@@ -360,11 +365,16 @@ md-radio-button.md-checked .md-on {
 
 @media screen and (max-width: 599px) {
     prm-search-bar {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
     }
     prm-search-bar .search-input {
         height: 60px;
+    }
+    prm-search-bar .search-bar-hkall {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-right: 2px;
     }
     prm-alert-bar .alert-bar .bar-text {
         min-width: 200px;
