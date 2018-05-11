@@ -29,7 +29,7 @@ app.component('prmHkallItemLink', {
         <div class="hkallLink" ng-if="$ctrl.isDisplay()">
             <span>
                 <a target="_blank" ng-href="{{$ctrl.getHkallUrl()}}">
-                    View item in HKALL
+                    <span translate="nui.custom.view-item-in-hkall">View item in HKALL</span>
                     <md-icon md-svg-icon="primo-ui:open-in-new" alt="" class="md-primoExplore-theme" aria-hidden="true">
                         <svg id="open-in-new_cache269" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
                             <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path>

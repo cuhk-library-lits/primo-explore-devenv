@@ -11,18 +11,6 @@ function BrowzineIntegrationService($http, $location) {
     var lang = $location.search().lang;
 
     this.bookIconLink = "https://s3.amazonaws.com/thirdiron-assets/images/integrations/browzine_open_book_icon.png";
-    this.primoArticleBrowZineWebLinkText = "Available at BrowZine";
-    this.primoJournalBrowZineWebLinkText = "Journal Available at BrowZine";
-    switch (lang) {
-        case "zh_TW":
-            this.primoArticleBrowZineWebLinkText = "查看 BrowZine";
-            this.primoJournalBrowZineWebLinkText = "查看期刊 BrowZine";
-            break;
-        case "zh_CN":
-            this.primoArticleBrowZineWebLinkText = "查看 BrowZine";
-            this.primoJournalBrowZineWebLinkText = "查看期刊 BrowZine";
-            break;
-    }
 
     this.httpGet = function(endPoint) {
         if (endPoint) {

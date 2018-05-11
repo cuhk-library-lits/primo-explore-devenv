@@ -37,18 +37,11 @@ function HKALLItemLinkService($location, $http, $q) {
     this.generateHkallUrlPromise = function(docId) {
         var hkallUrl = "";
         if (docId && docId.length > 0) {
-            var query = $location.search().query;
-            var sortby = $location.search().sortby;
-            var offset = $location.search().offset;
             var lang = $location.search().lang;
-
             hkallUrl = "/primo-explore/fulldisplay?" +
                         "docid=" + docId +
                         "&context=P2P&vid=CUHK&search_scope=HKALL_PTP2&adaptor=HKALL_PTP2&tab=hkall_tab" +
-                        "&query=" + query +
-                        "&sortby=" + sortby +
-                        "&offset=" + offset +
-                        "lang=" + lang;
+                        "&lang=" + lang;
         }
         return $q.when(hkallUrl);
     }

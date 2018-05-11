@@ -10,8 +10,6 @@
 // Add Article In Context & BrowZine Links
 app.controller('prmSearchResultAvailabilityLineAfterController', ['BrowzineIntegrationService', function (BrowzineIntegrationService) {
     var ctrl = this;
-    ctrl.primoJournalBrowZineWebLinkText = BrowzineIntegrationService.primoJournalBrowZineWebLinkText;
-    ctrl.primoArticleBrowZineWebLinkText = BrowzineIntegrationService.primoArticleBrowZineWebLinkText;
     ctrl.bookIconLink = BrowzineIntegrationService.bookIconLink;
     if (ctrl.parentCtrl.result.pnx.addata.doi && ctrl.parentCtrl.result.pnx.display.type[0] == 'article') {
         var doi = ctrl.parentCtrl.result.pnx.addata.doi[0] || '';
@@ -48,7 +46,9 @@ app.component('prmSearchResultAvailabilityLineAfter', {
         <div ng-if="$ctrl.article.data.browzineWebLink">
             <a href="{{ $ctrl.article.data.browzineWebLink }}" target="_blank" title="Via BrowZine">
                 <img src="{{ $ctrl.bookIconLink }}" class="browzine-icon">
-                <span class="browzine-link-label">{{ $ctrl.primoArticleBrowZineWebLinkText }}</span>
+                <span class="browzine-link-label" translate="nui.custom.article-browzine-web-link">
+                    Available at BrowZine
+                </span>
                 <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link">
                     <svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg>
                 </md-icon>
@@ -57,7 +57,9 @@ app.component('prmSearchResultAvailabilityLineAfter', {
         <div ng-if="$ctrl.journal.data[0].browzineWebLink">
             <a href="{{ $ctrl.journal.data[0].browzineWebLink }}" target="_blank" title="Via BrowZine">
                 <img src="{{ $ctrl.bookIconLink }}" class="browzine-icon">
-                <span class="browzine-link-label">{{ $ctrl.primoJournalBrowZineWebLinkText }}</span>
+                <span class="browzine-link-label" translate="nui.custom.journal-browzine-web-link">
+                    Journal Available at BrowZine
+                </span>
                 <md-icon md-svg-icon="primo-ui:open-in-new" aria-label="icon-open-in-new" role="img" class="browzine-external-link">
                     <svg id="open-in-new_cache29" width="100%" height="100%" viewBox="0 0 24 24" y="504" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"></svg>
                 </md-icon>

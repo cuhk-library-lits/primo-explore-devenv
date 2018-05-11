@@ -1,4 +1,4 @@
-prm-search-bar .search-bar-hkall {
+prm-search-bar .search-bar-scope-link {
     display: block;
     text-align: right;
     height: 25px;
@@ -7,18 +7,21 @@ prm-search-bar .search-bar-hkall {
     margin-bottom: 2px;
 }
 
-prm-search-bar .search-bar-hkall-hidden {
-    height: 15px;
-}
-
-prm-search-bar .search-bar-hkall a:before {
-    content: url('../img/hkall-small.png');
+prm-search-bar .search-bar-scope-link a:before {
     position: relative;
     top: 3px;
     margin-right: 3px;
 }
 
-prm-search-bar .search-bar-hkall md-icon {
+prm-search-bar .search-bar-hkall a:before {
+    content: url('../img/hkall-small.png');
+}
+
+prm-search-bar .search-bar-cuhk-library-search a:before {
+    content: url('../img/hkall-small.png');
+}
+
+prm-search-bar .search-bar-scope-link md-icon {
     height: 15px;
     min-height: 15px;
     width: 15px;
@@ -28,7 +31,7 @@ prm-search-bar .search-bar-hkall md-icon {
 }
 
 @media screen and (max-width: 599px) {
-    prm-search-bar .search-bar-hkall {
+    prm-search-bar .search-bar-scope-link {
         margin-top: 2px;
         margin-bottom: 2px;
         margin-right: 2px;
