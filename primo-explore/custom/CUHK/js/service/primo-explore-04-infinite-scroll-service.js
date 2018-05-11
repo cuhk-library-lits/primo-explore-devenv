@@ -1,5 +1,5 @@
 var SCROLL_LIMIT_EFF_SCREEN_WIDTH = 960;
-var SCROLL_LIMIT_MARGIN = 1;
+var SCROLL_LIMIT_MARGIN = 50;
 
 function InfiniteScrollService($document, $window) {
     var docRoot = $document[0];
