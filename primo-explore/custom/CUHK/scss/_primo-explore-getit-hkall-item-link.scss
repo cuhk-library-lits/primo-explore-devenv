@@ -16,11 +16,16 @@ prm-hkall-item-link .hkallLink a:before {
     margin-right: 3px;
 }
 
-prm-hkall-item-link .hkallLink md-icon {
+prm-hkall-item-link .hkallLink md-icon,
+prm-hkall-item-inst-link .instHkallLink md-icon {
     height: 15px;
     min-height: 15px;
     width: 15px;
     min-width: 15px;
     top: -2px;
     position: relative;
+}
+
+prm-hkall-item-inst-link {
+    margin-top: 10px;
 }
