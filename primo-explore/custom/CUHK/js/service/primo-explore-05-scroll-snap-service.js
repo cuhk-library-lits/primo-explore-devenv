@@ -1,23 +1,33 @@
-var FACET_STUCK_Y = 24;
-var SCROLL_SNAP_MARGIN = 50;
+var SCROLL_SNAP_MARGIN = 30;
 var SCROLL_SNAP_EFF_SCREEN_WIDTH = 960;
 
 function ScrollSnapService($document, $window) {
-    var docRoot = $document[0];
+    var facetDiv = null;
+
+    this.findFacetDiv = function () {
+        if (facetDiv == null)
+            facetDiv = $document[0].querySelector('.sidebar .primo-scrollbar');
+    }
 
     this.docRootElement = function() {
-        return angular.element(docRoot);
+        return angular.element($document[0]);
     }
 
     this.getScrollSnapY = function() {
-        var facetDiv = docRoot.querySelector('.sidebar .primo-scrollbar');
-        if (facetDiv) {
-            var facetDivY = facetDiv.getBoundingClientRect().top;
-            if (facetDivY > 0 && Math.abs(facetDivY - FACET_STUCK_Y) <= SCROLL_SNAP_MARGIN) {
-                return $window.pageYOffset + facetDivY - FACET_STUCK_Y;
-            }
+        var scrollSnapY = $window.pageYOffset;
+        if (!facetDiv)
+            return scrollSnapY;
+
+        var stickyOffset = facetDiv.attributes['offset'].value;
+        if (!stickyOffset)
+            return scrollSnapY;
+
+        var facetDivY = facetDiv.getBoundingClientRect().top;
+        if (facetDivY > stickyOffset && (facetDivY - stickyOffset) <= SCROLL_SNAP_MARGIN) {
+            var offset = Math.ceil(facetDivY - stickyOffset);
+            scrollSnapY = scrollSnapY + offset + 3;
         }
-        return $window.pageYOffset;
+        return scrollSnapY;
     };
 
     this.effective = function() {
@@ -26,15 +36,21 @@ function ScrollSnapService($document, $window) {
 }
 
 ScrollSnapService.prototype.init = function () {
-    var getScrollSnapY = this.getScrollSnapY;
     var effective = this.effective;
+    var findFacetDiv = this.findFacetDiv;
+    var getScrollSnapY = this.getScrollSnapY;
+    var fineTune = this.fineTune;
     var debounce;
-    this.docRootElement().bind('scroll', function () {
+    this.docRootElement().bind('scroll', function (e) {
         if (effective()) {
+            findFacetDiv();
             var scrollSnapY = getScrollSnapY();
             clearTimeout(debounce);
             debounce = setTimeout(function () {
-                window.scrollTo(0, Math.ceil(scrollSnapY));
+                e.preventDefault();
+                e.stopPropagation();                
+                window.scrollTo(0, scrollSnapY);
+                return false;
             }, 100);
         }
     });
