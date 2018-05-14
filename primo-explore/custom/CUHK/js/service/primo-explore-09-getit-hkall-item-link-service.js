@@ -73,8 +73,7 @@ HKALLItemLinkService.prototype.getHkallUrl = function (itemPnx) {
             var getAlmaIdSubfield = this.getAlmaIdSubfield;
             var generateHkallUrlPromise = this.generateHkallUrlPromise;
 
-            return this.pnxSearch().catch(function (error) {
-                console.error(error);
+            return this.pnxSearch().catch(function () {
                 return rejectPromise();
             }).then(function (response) {
                 var docs = response.data.docs;
