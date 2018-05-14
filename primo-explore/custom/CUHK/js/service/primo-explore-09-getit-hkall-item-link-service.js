@@ -20,6 +20,7 @@ function HKALLItemLinkService($location, $http, $q) {
     }
     
     this.pnxSearch = function () {
+        // HTTP GET
         return $http(this.pnxSearchReq);
     }
 
@@ -45,11 +46,15 @@ function HKALLItemLinkService($location, $http, $q) {
         }
         return $q.when(hkallUrl);
     }
+
+    this.rejectPromise = function() {
+        return $q.reject();
+    }
 }
 
 HKALLItemLinkService.prototype.getHkallUrl = function (itemPnx) {
     if (this.skipForHkallTab())
-        return;
+        return this.rejectPromise();
 
     var almaIds = itemPnx.control.almaid;
     if (almaIds && almaIds.length > 0) {
@@ -67,15 +72,19 @@ HKALLItemLinkService.prototype.getHkallUrl = function (itemPnx) {
 
             var getAlmaIdSubfield = this.getAlmaIdSubfield;
             var generateHkallUrlPromise = this.generateHkallUrlPromise;
-            return this.pnxSearch().then(function (response) {
+
+            return this.pnxSearch().catch(function (error) {
+                console.error(error);
+                return rejectPromise();
+            }).then(function (response) {
                 var docs = response.data.docs;
         
                 if (!docs || docs.length <= 0 || !docs[0].pnx.control.recordid || docs[0].pnx.control.recordid.length <= 0)
-                    return;
+                    return rejectPromise();
 
                 var recordId = docs[0].pnx.control.recordid[0];
                 if (recordId.length <= 0)
-                    return;
+                    return rejectPromise();
 
                 if (!recordId.startsWith("TN_dedupmrg")) {
                     return generateHkallUrlPromise(recordId);
@@ -97,6 +106,7 @@ HKALLItemLinkService.prototype.getHkallUrl = function (itemPnx) {
             break;
         }
     }
+    return this.rejectPromise();
 }
 
 app.service('HKALLItemLinkService', ['$location', '$http', '$q', HKALLItemLinkService]);

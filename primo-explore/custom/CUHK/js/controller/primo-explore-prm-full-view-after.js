@@ -6,7 +6,10 @@ app.controller('prmHkallItemLinkController', ['HKALLItemLinkService', function (
     ctrl.display = false;
     var itemPnx = ctrl.parentCtrl.parentCtrl.item.pnx;
     if (itemPnx) {
-        HKALLItemLinkService.getHkallUrl(itemPnx).then(function(hkallUrl) {
+        HKALLItemLinkService.getHkallUrl(itemPnx).catch(function(error) {
+            console.error(error);
+            return;
+        }).then(function(hkallUrl) {
             if (hkallUrl && hkallUrl.length > 0) {
                 ctrl.hkallurl = hkallUrl;
                 ctrl.display = true;
