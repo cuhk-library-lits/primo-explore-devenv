@@ -26,6 +26,11 @@ prm-hkall-item-inst-link .instHkallLink md-icon {
     position: relative;
 }
 
-prm-hkall-item-inst-link {
-    margin-top: 10px;
+prm-hkall-item-inst-link .inst-hkall-link {
+    margin-top: 1.5em;
 }
+
+prm-hkall-item-inst-link md-list-item.md-2-line {
+    min-height: 60px !important;
+}
+

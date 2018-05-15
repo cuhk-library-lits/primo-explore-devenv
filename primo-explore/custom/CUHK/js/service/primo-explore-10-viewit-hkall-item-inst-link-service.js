@@ -2,30 +2,29 @@ function HKALLItemInstLinkService($location, $http, $q, HKALLItemLinkService) {
     this.enabled = true;
 
     this.instViewMap = {
-        '852JULAC_HKU': { vid: "HKU", tab: "hkall", enabled: true },
-        '852JULAC_CUHK': { vid: "CUHK", tab: "hkall_tab", enabled: false },
-        '852JULAC_HKUST': { vid: "HKUST", tab: "default_tab", enabled: true },
-        '852JULAC_HKPU': { vid: "HKPU", tab: "default_tab", enabled: true },
-        '852JULAC_HKBU': { vid: "HKBU", tab: "hkall", enabled: true },
-        '852JULAC_CUH': { vid: "CUH", tab: "default_tab", enabled: true },
-        '852JULAC_EDUHK': { vid: "EDUHK", tab: "default_tab", enabled: true },
-        '852JULAC_LUN': { vid: "LUN", tab: "hkall", enabled: true },
-        '852JULAC_NETWORK': { vid: "HKALL", tab: "default_tab", enabled: false },
+        '852JULAC_HKU':     { inst: "HKU_ALMA", vid: "HKU", tab: "hkall", enabled: true },
+        '852JULAC_CUHK':    { inst: "CUHK_ALMA", vid: "CUHK", tab: "hkall_tab", enabled: false },
+        '852JULAC_HKUST':   { inst: "HKUST_ALMA", vid: "HKUST", tab: "default_tab", enabled: true },
+        '852JULAC_HKPU':    { inst: "HKPU_ALMA", vid: "HKPU", tab: "default_tab", enabled: true },
+        '852JULAC_HKBU':    { inst: "HKBU_ALMA", vid: "HKBU", tab: "hkall", enabled: true },
+        '852JULAC_CUH':     { inst: "CUH_ALMA", vid: "CUH", tab: "default_tab", enabled: true },
+        '852JULAC_EDUHK':   { inst: "EDUHK_ALMA", vid: "EDUHK", tab: "default_tab", enabled: true },
+        '852JULAC_LUN':     { inst: "LUN_ALMA", vid: "LUN", tab: "hkall", enabled: true },
+        '852JULAC_NETWORK': { inst: "JULAC_NETWORK", vid: "HKALL", tab: "default_tab", enabled: false },
     };
 
     this.getAlmaIdSubfield = HKALLItemLinkService.getAlmaIdSubfield;
     this.skipForHkallTab = HKALLItemLinkService.skipForHkallTab;
 
     this.generateInstHkallItemUrl = function (vid, tab, docId) {
-        var instHkallItemUrl = {};
+        var instHkallItemUrl = null;
 
         if (vid && vid.length > 0 && docId && docId.length > 0) {
-            instHkallItemUrl.vid = vid;
-            instHkallItemUrl.url = "/primo-explore/fulldisplay?" +
-                               "docid=" + docId +
-                               "&vid=" + vid +
-                               "&tab=" + tab +
-                               "&context=P2P&search_scope=HKALL_PTP2&adaptor=HKALL_PTP2";
+            instHkallItemUrl = "/primo-explore/fulldisplay?" +
+                                     "docid=" + docId +
+                                     "&vid=" + vid +
+                                     "&tab=" + tab +
+                                     "&context=P2P&search_scope=HKALL_PTP2&adaptor=HKALL_PTP2";
         }
         return instHkallItemUrl;
     }
@@ -38,7 +37,7 @@ HKALLItemInstLinkService.prototype.getHkallInstItemUrls = function (itemPnx) {
 
     var almaIds = itemPnx.control.almaid;
     if (almaIds && almaIds.length > 0) {
-        var instHkallItemUrls = new Array();
+        var instHkallItemUrls = {};
         for (var i = 0; i < almaIds.length; i++) {
             var almaId = almaIds[i];
             var instCodeIdStr = this.getAlmaIdSubfield(almaId, "V");
@@ -51,10 +50,11 @@ HKALLItemInstLinkService.prototype.getHkallInstItemUrls = function (itemPnx) {
 
             var docid = this.getAlmaIdSubfield(almaId, "O");
             if (instCode && this.instViewMap[instCode] && this.instViewMap[instCode].enabled) {
+                var inst = this.instViewMap[instCode].inst;
                 var vid = this.instViewMap[instCode].vid;
                 var tab = this.instViewMap[instCode].tab;
 
-                instHkallItemUrls.push(this.generateInstHkallItemUrl(vid, tab, docid));
+                instHkallItemUrls[inst] = this.generateInstHkallItemUrl(vid, tab, docid);
             }
         }
         return instHkallItemUrls;
