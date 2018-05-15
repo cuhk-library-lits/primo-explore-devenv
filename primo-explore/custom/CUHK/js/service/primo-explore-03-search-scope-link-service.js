@@ -1,6 +1,8 @@
 function SearchScopeLinkService($location) {
 
     this.getSearchScopeLink = function (searchText, displayHkallScope) {
+        if (!searchText || searchText.length <= 0)
+            searchText = "";
         var query = "any,contains," + searchText;
         var vid = $location.search().vid;
         var sortby = $location.search().sortby;
