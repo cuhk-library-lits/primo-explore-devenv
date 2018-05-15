@@ -53,12 +53,14 @@ app.controller('prmHkallItemInstLinkController', ['$window', 'HKALLItemInstLinkS
     ctrl.display = false;
     ctrl.instHkallItemUrls = null;
 
+    console.log(ctrl.parentCtrl.parentCtrl.item);
     var itemPnx = ctrl.parentCtrl.parentCtrl.item.pnx;
     if (itemPnx) {
         var instHkallItemUrls = HKALLItemInstLinkService.getHkallInstItemUrls(itemPnx);
         if (instHkallItemUrls && Object.keys(instHkallItemUrls).length > 0) {
             ctrl.display = true;
             ctrl.instHkallItemUrls = instHkallItemUrls;
+            console.log(instHkallItemUrls);
         }
     }
 

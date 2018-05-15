@@ -40,15 +40,28 @@ HKALLItemInstLinkService.prototype.getHkallInstItemUrls = function (itemPnx) {
         var instHkallItemUrls = {};
         for (var i = 0; i < almaIds.length; i++) {
             var almaId = almaIds[i];
-            var instCodeIdStr = this.getAlmaIdSubfield(almaId, "V");
-            var instCode = null;
-            if (instCodeIdStr) {
-                var instCodeToken = instCodeIdStr.match(/852[^:]*/g);
-                if (instCodeToken.length > 0)
-                    instCode = instCodeToken[0];
-            }
 
-            var docid = this.getAlmaIdSubfield(almaId, "O");
+            var instCode = null;
+            var docid = null;
+            if (almaId.indexOf("$$V") >= 0) {
+                var instCodeIdStr = this.getAlmaIdSubfield(almaId, "V");
+                if (instCodeIdStr) {
+                    var instCodeToken = instCodeIdStr.match(/852[^:]*/g);
+                    if (instCodeToken.length > 0)
+                        instCode = instCodeToken[0];
+                }
+                docid = this.getAlmaIdSubfield(almaId, "O");
+                
+            } else {
+                var instCodeIdStr = almaId;
+                if (instCodeIdStr) {
+                    var instCodeToken = instCodeIdStr.match(/852[^:]*/g);
+                    if (instCodeToken.length > 0)
+                        instCode = instCodeToken[0];
+                }
+
+                var docid = itemPnx.control.recordid;
+            }
             if (instCode && this.instViewMap[instCode] && this.instViewMap[instCode].enabled) {
                 var inst = this.instViewMap[instCode].inst;
                 var vid = this.instViewMap[instCode].vid;
@@ -56,6 +69,7 @@ HKALLItemInstLinkService.prototype.getHkallInstItemUrls = function (itemPnx) {
 
                 instHkallItemUrls[inst] = this.generateInstHkallItemUrl(vid, tab, docid);
             }
+            
         }
         return instHkallItemUrls;
     }
