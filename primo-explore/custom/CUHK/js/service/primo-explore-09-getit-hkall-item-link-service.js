@@ -1,5 +1,5 @@
 function HKALLItemLinkService($location, $http, $q) {
-    this.enabled = true;
+    this.enabled = false;
 
     this.pnxSearchReq = {
         url: "/primo_library/libweb/webservices/rest/primo-explore/v1/pnxs",

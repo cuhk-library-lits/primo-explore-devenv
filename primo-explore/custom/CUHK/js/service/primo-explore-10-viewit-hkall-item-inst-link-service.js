@@ -1,5 +1,5 @@
 function HKALLItemInstLinkService($location, $http, $q, HKALLItemLinkService) {
-    this.enabled = true;
+    this.enabled = false;
 
     this.instViewMap = {
         '852JULAC_HKU':     { inst: "HKU_ALMA", vid: "HKU", tab: "hkall", enabled: true },
