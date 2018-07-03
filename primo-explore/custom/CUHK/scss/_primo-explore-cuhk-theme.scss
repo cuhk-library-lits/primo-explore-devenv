@@ -338,6 +338,11 @@ md-radio-button.md-checked .md-on {
     color: #6D1B6D !important;
 }
 
+// Hide all giant icons in "My Library Record" pages
+prm-icon.giant-icon md-icon {
+    display: none;
+}
+
 @media screen and (max-width: 1279px) {
     prm-logo .product-logo-local {
         width: 180px !important;
