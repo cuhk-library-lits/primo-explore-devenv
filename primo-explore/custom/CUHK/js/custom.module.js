@@ -2,7 +2,7 @@
  * Add ngResource module dependency
  */
 var angularResourceScript = document.createElement("script");
-angularResourceScript.src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js";
+angularResourceScript.src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js";
 document.head.appendChild(angularResourceScript);
 
 
