@@ -80,6 +80,15 @@ prm-main-menu[menu-type = menu] .md-button {
     padding: 0 0.2em 0 0.2em  !important;
 }
 
+prm-alphabet-toolbar label.language-selector {
+    color: #6D1B6D !important;
+    font-weight: bold !important;
+}
+
+prm-alphabet-toolbar md-select {
+    color: #3D7E94 !important;
+}
+
 // Circle buttons
 prm-user-area .user-menu-button,
 prm-search-bookmark-filter .md-button {
