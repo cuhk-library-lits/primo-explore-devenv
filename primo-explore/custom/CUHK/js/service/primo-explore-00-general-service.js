@@ -1,6 +1,17 @@
 /**
  * Primo label translations
  */
+/**
+ * Add ngResource module dependency
+ */
+var angularResourceScript = document.createElement("script");
+angularResourceScript.src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js";
+document.head.appendChild(angularResourceScript);
+
+angularResourceScript.onload = function () {
+    var app = angular.module('viewCustom');
+    app.requires.push('ngResource');
+};
 
 
 function PrimoTranslationsService($resource, $q, $location) {
