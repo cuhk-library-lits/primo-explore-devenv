@@ -24,7 +24,6 @@ function BrowzineIntegrationService($q, PrimoTranslationsService) {
         });
 
         return $q.all([browzineAPI, browzineAPIKey, browzineJournalWebLinkText, browzineArticleWebLinkText, browzinePDFDownloadEnabled, browzinePDFDownloadLinkText]).then(function() {
-            
         });
     }
 }
