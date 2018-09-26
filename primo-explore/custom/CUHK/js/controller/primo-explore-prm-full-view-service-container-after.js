@@ -1,4 +1,3 @@
-/*
 app.component('prmFullViewServiceContainerAfter', {
     bindings: { parentCtrl: '<' },
     template: `
@@ -6,4 +5,3 @@ app.component('prmFullViewServiceContainerAfter', {
         <julac-view-it-from-other-inst parent-ctrl="$ctrl.parentCtrl"></julac-view-it-from-other-inst>
     `
 });
-*/
