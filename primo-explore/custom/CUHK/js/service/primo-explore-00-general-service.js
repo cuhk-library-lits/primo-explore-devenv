@@ -3,7 +3,7 @@
  */
 
 function PrimoTranslationsService($http, $cacheFactory, $q, $location) {
-    var config = {
+    var reqConfig = {
         method: 'get',
         url: '/primo_library/libweb/webservices/rest/v1/translations/CUHK',
         params: {lang: 'en_US'},
@@ -11,8 +11,8 @@ function PrimoTranslationsService($http, $cacheFactory, $q, $location) {
     }
     
     var getTranslations = function(language) {
-        config.params.lang = language;
-        return $http(config)
+        reqConfig.params.lang = language;
+        return $http(reqConfig)
     }
 
     this.getPrimoLabel = function(key) {
@@ -34,4 +34,17 @@ function PrimoTranslationsService($http, $cacheFactory, $q, $location) {
     
 }
 
+function PrimoConfigService(PrimoTranslationsService) {
+    this.isEnabled = function(key) {
+        return $q(function (resolve, reject) {
+            PrimoTranslationsService.getPrimoLabel(key).then(function success(value) {
+                resolve(value == "Y");
+            }, function error(value) {
+                reject("Failed to determine whether config is enabled: " + key);
+            });
+        });
+    }
+}
+
 app.service('PrimoTranslationsService', ['$http', '$cacheFactory', '$q', '$location', PrimoTranslationsService]);
+app.service('PrimoConfigService', ['PrimoTranslationsService', PrimoConfigService]);
