@@ -4,7 +4,7 @@
 ## Development guidelines
 
 1. Generate site color
-    - Update `primo-explore-devenv/primo-explore/<VIEW>/colos.json`, for example
+    - Update `primo-explore-devenv/primo-explore/<VIEW>/colors.json`, for example
         ```css
         {
         "primary": "#CCCCCC",
