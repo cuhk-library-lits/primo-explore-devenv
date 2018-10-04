@@ -5,16 +5,18 @@
 
 1. Generate site color
     - Update `primo-explore-devenv/primo-explore/<VIEW>/colos.json`, for example
-    > { 
-    >   "primary": "#CCCCCC", 
-    >   "secondary" : "#FFFFFF", 
-    >   "backgroundColor" : "white", 
-    >   "links": "#3D7E94", 
-    >   "warning": "tomato", 
-    >   "positive": "#0F7D00", 
-    >   "negative": "gray", 
-    >   "notice": "#E08303" 
-    > } 
+    ```css
+    {
+      "primary": "#CCCCCC",
+      "secondary" : "#FFFFFF",
+      "backgroundColor" : "white",
+      "links": "#3D7E94",
+      "warning": "tomato",
+      "positive": "#0F7D00",
+      "negative": "gray",
+      "notice": "#E08303"
+    }
+    ```
 
     - `cd` into `primo-explore-devenv` and run command `gulp app-css --view <VIEW>`
     
@@ -38,5 +40,7 @@
 
 3. To inspect angular scope
     - Use the following commands
+    ```js
     > angular.reloadWithDebugInfo() 
     > angular.element($0).scope().$ctrl 
+    ```
