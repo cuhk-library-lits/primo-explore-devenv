@@ -1,6 +1,8 @@
 app.controller('prmSearchBarAfterController', ['SearchScopeLinkService', function (SearchScopeLinkService) {
     var ctrl = this;
 
+    ctrl.parentCtrl.showTabsAndScopes = true; // Show tabs and scopes dropdowns
+    
     ctrl.getAltSearchScopeLink = function () {
         var searchText = ctrl.parentCtrl.mainSearchField;
         return SearchScopeLinkService.getSearchScopeLink(searchText, SearchScopeLinkService.displayHkallScope());
