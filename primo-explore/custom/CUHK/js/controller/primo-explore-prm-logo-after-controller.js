@@ -10,7 +10,7 @@ app.component('prmLogoAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'prmLogoAfterController',
     template: `
-        <div class="product-logo-local" id="banner" tabindex="0"  role="banner">
+        <div class="product-logo-local" id="local-banner-cuhk" role="banner" style="display: inline-block;">
             <a ng-href="{{ $ctrl.cuhkLink }}" target="_new">
                 <img class="logo-image" alt="CUHK Logo" ng-src="custom/CUHK/img/cuhk.png" src="custom/CUHK/img/cuhk.png">
             </a>
@@ -23,6 +23,9 @@ app.component('prmLogoAfter', {
                     <span><strong>Search</strong></span>
                 </div>
             </a>
+        </div>
+        <div class="product-logo-local" id="local-banner-hkall" role="banner" style="display: none;">
+            <img class="logo-image hkall-logo" alt="HKALL Logo" ng-src="custom/CUHK/img/hkall-logo.png" src="custom/CUHK/img/hkall-logo.png">
         </div>
         `
 });
