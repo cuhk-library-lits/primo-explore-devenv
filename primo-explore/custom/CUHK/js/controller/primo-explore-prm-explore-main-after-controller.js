@@ -1,5 +1,5 @@
-app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelService', 'ScrollSnapService', 'InfiniteScrollService', 
-    function ($document, SandboxLabelService, ScrollSnapService, InfiniteScrollService) {    
+app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelService', 'ScrollSnapService', 
+    function ($document, SandboxLabelService, ScrollSnapService) {    
         var ctrl = this;
 
         ctrl.showSandboxLabel = SandboxLabelService.showSandboxLabel;
@@ -8,7 +8,6 @@ app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelServi
         }
         
         ScrollSnapService.init();
-        InfiniteScrollService.init();
     }
 ]);
 
