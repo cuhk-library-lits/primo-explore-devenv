@@ -1,11 +1,12 @@
-function CUHKLibraryLogoService($location) {
+function CUHKLibraryLogoService($location, SearchScopeService) {
     this.hostName;
     this.lang;
     this.cuhkLink;
     this.cuhkLibraryLink;
     this.cuhkLibrarySearchLink;
+    this.hkallLink;
 
-    this.refreshLinks = function() {
+    this.refreshLinks = () => {
         this.hostName = $location.protocol() + "://" + $location.host() + ":" + $location.port();
         this.lang = $location.search().lang;
         this.cuhkLink = "http://www.cuhk.edu.hk/";
@@ -21,7 +22,12 @@ function CUHKLibraryLogoService($location) {
                 break;
         }
         this.cuhkLibrarySearchLink = this.hostName + "/primo-explore/search?vid=CUHK&tab=default_tab&lang=" + this.lang + "&sortby=rank";
+        this.hkallLink = this.hostName + "/primo-explore/search?vid=HKALL&sortby=rank&lang=en_US";
     }
+
+    this.showCUHKBranding = () => SearchScopeService.currentScopeIsCUHK();
+
+    this.showHKALLBranding = () => !SearchScopeService.currentScopeIsCUHK();
 }
 
-app.service('CUHKLibraryLogoService', ['$location', CUHKLibraryLogoService]);
+app.service('CUHKLibraryLogoService', ['$location', 'SearchScopeService', CUHKLibraryLogoService]);

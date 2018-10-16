@@ -1,21 +1,35 @@
-app.controller('prmSearchBarAfterController', ['SearchScopeLinkService', function (SearchScopeLinkService) {
+app.controller('prmSearchBarAfterController', ['SearchScopeService', function (SearchScopeService) {
     var ctrl = this;
 
     ctrl.parentCtrl.showTabsAndScopes = true; // Show tabs and scopes dropdowns
-    
+
+    var _primoSwitchAdvancedSearchHandler = ctrl.parentCtrl.switchAdvancedSearch;
+    ctrl.parentCtrl.switchAdvancedSearch = function () {
+        ctrl.parentCtrl.selectedTab = SearchScopeService.getCurrentTab();
+        SearchScopeService.refreshScope(ctrl.parentCtrl.selectedTab);
+        if (SearchScopeService.currentScopeIsCUHK() && ctrl.parentCtrl.scopeField == SearchScopeService.HKALL_DEFAULT_SCOPE_VALUE)
+            ctrl.parentCtrl.scopeField = SearchScopeService.CUHK_DEFAULT_SCOPE_VALUE;
+        else if (!SearchScopeService.currentScopeIsCUHK() && ctrl.parentCtrl.scopeField != SearchScopeService.HKALL_DEFAULT_SCOPE_VALUE)
+            ctrl.parentCtrl.scopeField = SearchScopeService.HKALL_DEFAULT_SCOPE_VALUE
+        
+        // Call Primo original handler
+        _primoSwitchAdvancedSearchHandler.apply(this);
+
+    }
+
     ctrl.getAltSearchScopeLink = function () {
         var searchText = ctrl.parentCtrl.mainSearchField;
-        return SearchScopeLinkService.getSearchScopeLink(searchText, SearchScopeLinkService.displayHkallScope());
+        return SearchScopeService.getSearchScopeLink(searchText, SearchScopeService.currentScopeIsCUHK());
     }
 
     ctrl.getAltSearchScopeCssClass = function () {
-        if (SearchScopeLinkService.displayHkallScope())
+        if (SearchScopeService.currentScopeIsCUHK())
             return "search-bar-hkall";
         return "search-bar-cuhk-library-search";
     }
 
-    ctrl.displayHkallScope = function () {
-        return SearchScopeLinkService.displayHkallScope();
+    ctrl.displayHkallScopeLink = function () {
+        return SearchScopeService.currentScopeIsCUHK();
     }
 }]);
 
@@ -25,12 +39,12 @@ app.component('prmSearchBarAfter', {
     template: `
         <div class="search-bar-scope-link" ng-class="$ctrl.getAltSearchScopeCssClass()">
             <a ng-href="{{ $ctrl.getAltSearchScopeLink() }}" target="_blank">
-                <span ng-if="$ctrl.displayHkallScope()">
+                <span ng-if="$ctrl.displayHkallScopeLink()">
                     <span translate="nui.custom.search-in-hkall">
                         Search in HKALL
                     </span>
                 </span>
-                <span ng-if="$ctrl.displayHkallScope()==false">
+                <span ng-if="$ctrl.displayHkallScopeLink()==false">
                     <span translate="nui.custom.search-in-cuhk">
                         Search in CUHK
                     </span>

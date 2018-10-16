@@ -22,8 +22,11 @@ md-input-container:after {
 
 // Topbar
 prm-topbar .top-nav-bar {
-    background-color:#6D1B6D; 
+    background-color:#6D1B6D;
     height:60px !important; 
+}
+prm-topbar .hkall {
+    background: linear-gradient(175deg, #2188B8 20%, #6D1B6D 90%) !important;
 }
 prm-topbar prm-logo {
     max-width: 180px !important; 
@@ -358,7 +361,7 @@ prm-icon.giant-icon md-icon {
     display: none;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1320px) {
     prm-logo .product-logo-local {
         width: 180px !important;
         padding-left: 2px !important;
