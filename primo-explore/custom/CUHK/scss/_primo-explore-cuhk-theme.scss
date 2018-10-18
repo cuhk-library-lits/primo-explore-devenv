@@ -352,6 +352,12 @@ md-radio-button.md-checked .md-on {
     background-color: #6D1B6D;
 }
 
+prm-service-details .section-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
 .dark-toolbar prm-pre-filters {
     color: #6D1B6D !important;
 }
