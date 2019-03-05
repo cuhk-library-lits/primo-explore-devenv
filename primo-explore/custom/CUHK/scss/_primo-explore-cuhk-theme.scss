@@ -233,9 +233,6 @@ prm-search-bar .search-elements-wrapper.simple-mode {
 .search-elements-wrapper {
     min-height: 40px !important;
 }
-.search-elements-wrapper md-input-container {
-    min-height: 100% !important;
-}
 .search-elements-wrapper form input{
     height: 100% !important;
 }
@@ -290,6 +287,14 @@ prm-brief-result-container .result-item-actions .md-icon-button:hover
 prm-brief-result-container .result-item-actions .pin-button.pinned:hover
 {
     color: #9E0D9E !important;
+}
+.list-item-wrapper .item-bookmarked,
+.list-item-wrapper .item-bookmarked:hover,
+.prm-highlight,
+.prm-highlight.prm-hue1,
+prm-breadcrumbs .md-chip.persistent-facet,
+prm-breadcrumbs .prm-hue1.md-chip.persistent-facet {
+    background-color: #fffcc4 !important;
 }
 
 
