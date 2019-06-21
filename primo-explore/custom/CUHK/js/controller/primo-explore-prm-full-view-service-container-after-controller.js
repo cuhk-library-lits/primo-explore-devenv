@@ -1,3 +1,7 @@
+/**
+ * Note: Inherit from Central package
+ */
+
 app.component("prmFullViewServiceContainerAfter", {
   bindings: { parentCtrl: "<" },
   template: `
