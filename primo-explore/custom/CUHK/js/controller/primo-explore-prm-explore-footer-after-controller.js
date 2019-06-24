@@ -1,4 +1,4 @@
-app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelService', 'ScrollSnapService', 
+app.controller("prmExploreFooterAfterController", ['$document', 'SandboxLabelService', 'ScrollSnapService', 
     function ($document, SandboxLabelService, ScrollSnapService) {    
         var ctrl = this;
 
@@ -11,9 +11,9 @@ app.controller('prmExploreMainAfterController', ['$document', 'SandboxLabelServi
     }
 ]);
 
-app.component('prmExploreMainAfter', {
+app.component('prmExploreFooterAfter', {
     bindings: { parentCtrl: '<' },
-    controller: 'prmExploreMainAfterController',
+    controller: 'prmExploreFooterAfterController',
     template: `
         <div ng-if="$ctrl.showSandboxLabel" class="sandbox-label">Sandbox</div>
         `
