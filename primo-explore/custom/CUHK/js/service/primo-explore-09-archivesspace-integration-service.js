@@ -34,7 +34,4 @@ ArchivesSpaceIntegrationService.prototype.hideDefaultAvailability = element => {
   });
 };
 
-app.service("ArchivesSpaceIntegrationService", [
-  "$location",
-  ArchivesSpaceIntegrationService
-]);
+app.service("ArchivesSpaceIntegrationService", [ "$location", ArchivesSpaceIntegrationService ]);
