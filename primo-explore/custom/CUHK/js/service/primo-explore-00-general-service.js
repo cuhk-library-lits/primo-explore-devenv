@@ -46,5 +46,21 @@ function PrimoConfigService(PrimoTranslationsService) {
     }
 }
 
+function PnxSubfieldService() {
+    this.getSubfieldValue = function(field, subfieldKey) {
+        var _field = (field + "").trim();
+        var _subfieldKey = (subfieldKey + "").trim();
+        var tokens = _field.split(/\$\$/);
+        
+        for (var i = 1; i < tokens.length; i++) {
+          if (tokens[i].startsWith(_subfieldKey)) {
+            return tokens[i].substring(1);
+          }
+        }
+        return null;
+    }
+}
+
 app.service('PrimoTranslationsService', ['$http', '$cacheFactory', '$q', '$location', PrimoTranslationsService]);
 app.service('PrimoConfigService', ['PrimoTranslationsService', PrimoConfigService]);
+app.service('PnxSubfieldService', [PnxSubfieldService]);

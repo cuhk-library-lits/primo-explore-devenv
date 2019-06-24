@@ -1,0 +1,8 @@
+prm-full-view prm-brief-result .item-title {
+    user-select: text;
+    cursor: text;
+}
+
+prm-full-view prm-brief-result .item-title a {
+    pointer-events: none;
+}
